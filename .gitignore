@@ -40,3 +40,4 @@ app.*.map.json
 .sqlite
 .sqlite3
 .bdapppet.db
+.fake
