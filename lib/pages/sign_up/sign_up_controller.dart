@@ -20,18 +20,19 @@ class SignUpController {
 
   // Verifica se o email já está cadastrado
   Future<void> criaUsuario() async {
-    if (_nome != null && _email != null && _senha != null && _tipo != null) {
-      // Verifique se o email já existe no banco de dados
+    if (_nome?.isNotEmpty == true &&
+        _email?.isNotEmpty == true &&
+        _senha?.isNotEmpty == true &&
+        _tipo?.isNotEmpty == true) {
       final usuarioExistente = await _usuario.buscarUsuarioPorEmail(_email!);
 
       if (usuarioExistente != null) {
         throw Exception('Email já cadastrado');
       }
 
-      // Se o email não existe, insira o novo usuário
       await _usuario.cadastrarUsuario(_nome!, _email!, _senha!, _tipo!);
     } else {
-      throw Exception('Nome, email, senha ou tipo não preenchidos');
+      throw Exception('Por favor, preencha todos os campos.');
     }
   }
 
