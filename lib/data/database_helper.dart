@@ -99,4 +99,6 @@ class DatabaseHelper {
     final db = await instance.database;
     return await db.query('usuarios');
   }
+
+  atualizarUsuario(String nome, String email) {}
 }

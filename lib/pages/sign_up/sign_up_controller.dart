@@ -1,3 +1,4 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_agendamento_pet/data/database_helper.dart';
 
 class SignUpController {
@@ -31,6 +32,10 @@ class SignUpController {
       }
 
       await _usuario.cadastrarUsuario(_nome!, _email!, _senha!, _tipo!);
+
+      // Armazenar o email no SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('email', _email!); // Armazenando o email
     } else {
       throw Exception('Por favor, preencha todos os campos.');
     }
